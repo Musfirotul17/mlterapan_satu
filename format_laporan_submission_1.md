@@ -3,18 +3,22 @@
 ## Domain Proyek
 
 **Latar Belakang**
+
 Klasifikasi gender berdasarkan fitur wajah merupakan topik penting dalam bidang pengenalan pola dan visi komputer (Sofwan Alfaritsi, 2024). Dengan kemajuan teknologi dan meningkatnya kebutuhan akan sistem identifikasi otomatis, kemampuan untuk menentukan gender seseorang melalui analisis fitur wajah menjadi semakin relevan dalam berbagai aplikasi, seperti keamanan, interaksi manusia-komputer, dan pemasaran yang ditargetkan (Hanifa Salsabila, 2021).
 
 Dataset yang digunakan dalam penelitian ini mencakup informasi tentang berbagai fitur wajah, termasuk panjang rambut, lebar dan tinggi dahi, lebar dan panjang hidung, ketebalan bibir, serta jarak antara hidung dan bibir. Fitur-fitur ini dipilih karena menunjukkan perbedaan yang signifikan antara pria dan wanita, sehingga menjadi indikator yang tepat untuk proses klasifikasi gender.
 
 
 **Tujuan Proyek**
+
 Tujuan utama dari penelitian ini adalah untuk mengembangkan model klasifikasi yang dapat memprediksi gender seseorang berdasarkan fitur-fitur wajah yang tersedia dalam dataset. Dengan memanfaatkan teknik pembelajaran mesin seperti Logistic Regression, Random Forest, Decision Tree, dan K-Nearest Neighbors (KNN), proyek ini bertujuan untuk mengevaluasi efektivitas masing-masing metode dalam konteks klasifikasi gender.
 
 **Signifikansi Proyek**
+
 Proyek ini memiliki signifikansi dalam pengembangan sistem identifikasi otomatis yang lebih akurat dan efisien. Dengan memahami fitur-fitur wajah yang paling berpengaruh dalam menentukan gender, sistem dapat dioptimalkan untuk berbagai aplikasi praktis. Selain itu, proyek ini juga memberikan kontribusi dalam pemahaman lebih lanjut mengenai perbedaan morfologi wajah antara pria dan wanita, yang dapat berguna dalam bidang antropologi dan forensik.
 
 **Daftar Pustaka (Format APA)**:
+
 Hanifa Salsabila, E. R. (2021). Klasifikasi Gender Berdasarkan Citra Wajah Menggunakan Metode Local Binary Pattern dan K-Nearest Neighbor. Jurnal Tugas Akhir Fakultas Informatika, 3137-3146.
 Sofwan Alfaritsi, M. H. (2024). IMPLEMENTASI KLASIFIKASI JENIS KELAMIN MENGGUNAKAN PSO DAN EKSTRAKSI FITUR CNN. SENAFTI (Seminar Nasional Mahasiswa Fakultas Teknologi Informasi), 803-810.
 
@@ -72,7 +76,9 @@ Terdapat lebih banyak data untuk Male (1783) dibandingkan Female (1450).
 ![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20long%20bar%20chart.png?raw=true)
 ![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20to%20lips.png?raw=true)
 Visualisasi ini memberikan wawasan mengenai distribusi fitur-fitur seperti panjang rambut, lebar dahi, hidung lebar, dan lainnya untuk masing-masing gender. Hal ini sangat berguna untuk mengevaluasi pola dan hubungan antara fitur dan gender.
+
 **Kesimpulan Awal dari EDA:**
+
 - Kolom gender menunjukkan distribusi yang lebih banyak untuk Male daripada Female.
 - Setiap fitur seperti long_hair, nose_wide, dan distance_nose_to_lip_long memiliki distribusi yang berbeda pada masing-masing gender. Misalnya, "long hair" cenderung lebih banyak ditemukan pada Female, sementara "wide nose" lebih sering muncul pada Male.
 
