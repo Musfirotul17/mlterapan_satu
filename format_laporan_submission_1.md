@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Musfirotul Khusna
 
 ## Domain Proyek
 
@@ -62,6 +62,16 @@ Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Distribusi Gender :Untuk mengetahui distribusi data berdasarkan gender, kita dapat menggunakan bar chart dan pie chart untuk memvisualisasikan frekuensi masing-masing kategori gender.
 ![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/visualisasi%20pie%20dan%20bar%20chart.png?raw=true)
+Terdapat lebih banyak data untuk Male (1783) dibandingkan Female (1450).
+- Distribusi Fitur Berdasarkan Gender : Untuk melihat perbedaan distribusi masing-masing fitur berdasarkan gender, kita dapat menggunakan count plot yang menunjukkan jumlah kategori untuk setiap kolom dibandingkan dengan gender.
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/forehead%20height%20bar%20chart.png?raw=true)
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/forehead%20with%20cm%20bar%20chart.png?raw=true)
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/hair%20bar%20chart.png?raw=true)
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/lips%20thin.png?raw=true)
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20bar%20chart.png?raw=true)
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20long%20bar%20chart.png?raw=true)
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20to%20lips.png?raw=true)
+Visualisasi ini memberikan wawasan mengenai distribusi fitur-fitur seperti panjang rambut, lebar dahi, hidung lebar, dan lainnya untuk masing-masing gender. Hal ini sangat berguna untuk mengevaluasi pola dan hubungan antara fitur dan gender.
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
