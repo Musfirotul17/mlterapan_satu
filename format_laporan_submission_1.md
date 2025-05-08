@@ -53,7 +53,7 @@ Dataset yang digunakan dalam proyek ini diambil dari Kaggle (https://www.kaggle.
 
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
+### Variabel-variabel pada Gender Classification dataset adalah sebagai berikut:
 - long_hair: Merupakan kolom yang berisi nilai 0 atau 1, di mana 1 menunjukkan "rambut panjang" dan 0 menunjukkan "bukan rambut panjang".
 - forehead_width_cm: Lebar dahi dalam satuan sentimeter (cm).
 - forehead_height_cm: Tinggi dahi dalam satuan sentimeter (cm).
@@ -100,36 +100,44 @@ Alasan: Scaling diperlukan agar fitur yang memiliki skala berbeda tidak mendomin
 Pada tahap ini, dilakukan pemodelan untuk menyelesaikan masalah klasifikasi gender berdasarkan fitur wajah menggunakan empat algoritma machine learning, yaitu: Logistic Regression, K-Nearest Neighbors (KNN), Decision Tree, dan Random Forest. Semua model dilatih menggunakan data latih (x_train, y_train) yang telah dipisahkan sebelumnya.
 
 1. Logistic Regression
+
 Kelebihan:
--Model yang sederhana dan mudah diinterpretasikan.
--Cepat dalam pelatihan dan prediksi.
+- Model yang sederhana dan mudah diinterpretasikan.
+- Cepat dalam pelatihan dan prediksi.
+
 Kekurangan:
--Cenderung memiliki performa rendah untuk data yang tidak linear.
--Sensitif terhadap fitur yang saling berkorelasi.
+- Cenderung memiliki performa rendah untuk data yang tidak linear.
+- Sensitif terhadap fitur yang saling berkorelasi.
 
 2. K-Nearest Neighbors (KNN)
+
 Kelebihan:
--Tidak memerlukan proses pelatihan (lazy learner).
--Sederhana dan cocok untuk data dengan distribusi yang jelas.
+- Tidak memerlukan proses pelatihan (lazy learner).
+- Sederhana dan cocok untuk data dengan distribusi yang jelas.
+
 Kekurangan:
--Waktu prediksi bisa lambat karena menghitung jarak dengan seluruh data latih.
--Sensitif terhadap pemilihan nilai k dan skala fitur.
+- Waktu prediksi bisa lambat karena menghitung jarak dengan seluruh data latih.
+- Sensitif terhadap pemilihan nilai k dan skala fitur.
 
 3. Decision Tree
+
 Kelebihan:
--Mudah diinterpretasikan (berbentuk pohon keputusan).
--Dapat menangani data numerik dan kategorikal.
--Tidak membutuhkan normalisasi data.
+- Mudah diinterpretasikan (berbentuk pohon keputusan).
+- Dapat menangani data numerik dan kategorikal.
+- Tidak membutuhkan normalisasi data.
+
 Kekurangan:
--Rentan terhadap overfitting terutama jika tidak dilakukan pruning.
+- Rentan terhadap overfitting terutama jika tidak dilakukan pruning.
 
 4. Random Forest
+
 Kelebihan:
--Mengatasi overfitting dari decision tree dengan teknik ensemble.
--Lebih stabil dan akurat dalam banyak kasus klasifikasi.
+- Mengatasi overfitting dari decision tree dengan teknik ensemble.
+- Lebih stabil dan akurat dalam banyak kasus klasifikasi.
+
 Kekurangan:
--Interpretasi lebih sulit dibanding decision tree tunggal.
--Memerlukan sumber daya komputasi lebih besar.
+- Interpretasi lebih sulit dibanding decision tree tunggal.
+- Memerlukan sumber daya komputasi lebih besar.
 
 Pemilihan Model Terbaik
 Setelah dilakukan pelatihan keempat model, dilakukan evaluasi terhadap performa masing-masing model menggunakan metrik evaluasi seperti akurasi, precision, recall, dan F1-score. Model terbaik dipilih berdasarkan hasil metrik evaluasi pada data uji. Jika hasil menunjukkan bahwa misalnya salah satu algritma memiliki nilai F1-score tertinggi, maka model tersebut dipilih sebagai model terbaik.Berdasarkan hasil evaluasi, model RandomForest memberikan hasil akurasi dan F1-score tertinggi dibandingkan model lainnya. Oleh karena itu, model ini dipilih sebagai solusi terbaik dalam klasifikasi gender pada dataset ini karena mampu mengatasi overfitting dan menangkap kompleksitas data lebih baik.
