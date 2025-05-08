@@ -9,7 +9,7 @@ Dataset yang digunakan dalam penelitian ini mencakup informasi tentang berbagai 
 
 
 **Tujuan Proyek**
-Tujuan utama dari penelitian ini adalah untuk mengembangkan model klasifikasi yang dapat memprediksi gender seseorang berdasarkan fitur-fitur wajah yang tersedia dalam dataset. Dengan memanfaatkan teknik pembelajaran mesin seperti Random Forest, Support Vector Machine (SVM), dan K-Nearest Neighbors (KNN), proyek ini bertujuan untuk mengevaluasi efektivitas masing-masing metode dalam konteks klasifikasi gender.
+Tujuan utama dari penelitian ini adalah untuk mengembangkan model klasifikasi yang dapat memprediksi gender seseorang berdasarkan fitur-fitur wajah yang tersedia dalam dataset. Dengan memanfaatkan teknik pembelajaran mesin seperti Logistic Regression, Random Forest, Decision Tree, dan K-Nearest Neighbors (KNN), proyek ini bertujuan untuk mengevaluasi efektivitas masing-masing metode dalam konteks klasifikasi gender.
 
 **Signifikansi Proyek**
 Proyek ini memiliki signifikansi dalam pengembangan sistem identifikasi otomatis yang lebih akurat dan efisien. Dengan memahami fitur-fitur wajah yang paling berpengaruh dalam menentukan gender, sistem dapat dioptimalkan untuk berbagai aplikasi praktis. Selain itu, proyek ini juga memberikan kontribusi dalam pemahaman lebih lanjut mengenai perbedaan morfologi wajah antara pria dan wanita, yang dapat berguna dalam bidang antropologi dan forensik.
@@ -35,11 +35,11 @@ Menjelaskan pernyataan masalah latar belakang:
 
 Menjelaskan tujuan dari pernyataan masalah:
 - Mengembangkan model klasifikasi berbasis machine learning yang dapat mengidentifikasi gender secara akurat berdasarkan data fitur.
-- Membandingkan beberapa algoritma seperti Logistic Regression, K-Nearest Neighbors (KNN), Decision Tree, Random Forest, dan Gradient Boosting untuk mengidentifikasi model dengan performa terbaik.
+- Membandingkan beberapa algoritma seperti Logistic Regression, K-Nearest Neighbors (KNN), Decision Tree, dan Random Forest untuk mengidentifikasi model dengan performa terbaik.
 - Menyediakan evaluasi model yang bisa dijadikan baseline bagi pengembangan sistem klasifikasi gender secara otomatis.
 
     ### Solution statements
-    - Menerapkan dan membandingkan lima algoritma klasifikasi (Logistic Regression, KNN, DecisionTreeClassifier, RandomForestClassifier, GradientBoostingClassifier) terhadap dataset gender. Setiap model dievaluasi berdasarkan akurasi pada data training dan testing, serta metrik precision, recall, dan f1-score.
+    - Menerapkan dan membandingkan empat algoritma klasifikasi (Logistic Regression, KNN, DecisionTreeClassifier, RandomForestClassifier) terhadap dataset gender. Setiap model dievaluasi berdasarkan akurasi pada data training dan testing, serta metrik precision, recall, dan f1-score.
     - Melakukan visualisasi dan analisis confusion matrix serta classification report untuk mengidentifikasi potensi bias atau ketidakseimbangan prediksi antar gender.
     - Menggunakan metrik akurasi (accuracy), macro average, dan weighted average F1-Score sebagai indikator performa yang terukur dari tiap model, serta mempertimbangkan overfitting dari model berdasarkan perbedaan akurasi training dan testing.
 
@@ -72,29 +72,171 @@ Terdapat lebih banyak data untuk Male (1783) dibandingkan Female (1450).
 ![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20long%20bar%20chart.png?raw=true)
 ![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/nose%20to%20lips.png?raw=true)
 Visualisasi ini memberikan wawasan mengenai distribusi fitur-fitur seperti panjang rambut, lebar dahi, hidung lebar, dan lainnya untuk masing-masing gender. Hal ini sangat berguna untuk mengevaluasi pola dan hubungan antara fitur dan gender.
-## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+**Kesimpulan Awal dari EDA:**
+- Kolom gender menunjukkan distribusi yang lebih banyak untuk Male daripada Female.
+- Setiap fitur seperti long_hair, nose_wide, dan distance_nose_to_lip_long memiliki distribusi yang berbeda pada masing-masing gender. Misalnya, "long hair" cenderung lebih banyak ditemukan pada Female, sementara "wide nose" lebih sering muncul pada Male.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+## Data Preparation
+1. Memisahkan fitur (input) dan target (output)
+Proses: Menyalin DataFrame asli, lalu memisahkan kolom-kolom fitur (X) dari target (y), yaitu kolom gender.
+Alasan: Pemisahan ini penting agar fitur dan label diproses secara terpisah, sesuai kebutuhan algoritma supervised learning.
+2. Membagi dataset menjadi data latih dan data uji
+Proses: Dataset dibagi menjadi 80% untuk training dan 20% untuk testing.
+Alasan: Untuk menghindari overfitting dan mengukur performa model secara objektif menggunakan data yang belum pernah dilatih.
+3. Mengubah label kategori ‘gender’ menjadi bentuk numerik
+Proses: Label gender diubah dari bentuk string (seperti 'Male', 'Female') menjadi angka menggunakan LabelEncoder.
+Alasan: Algoritma machine learning hanya bisa menerima data numerik, jadi kolom kategori perlu dikodekan terlebih dahulu.
+4.  Melakukan standarisasi menggunakan MinMaxScaler
+Proses: Semua fitur diubah ke rentang 0–1 menggunakan MinMaxScaler.
+Alasan: Scaling diperlukan agar fitur yang memiliki skala berbeda tidak mendominasi proses pelatihan model, terutama penting untuk algoritma yang berbasis jarak atau bobot.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Pada tahap ini, dilakukan pemodelan untuk menyelesaikan masalah klasifikasi gender berdasarkan fitur wajah menggunakan empat algoritma machine learning, yaitu: Logistic Regression, K-Nearest Neighbors (KNN), Decision Tree, dan Random Forest. Semua model dilatih menggunakan data latih (x_train, y_train) yang telah dipisahkan sebelumnya.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+1. Logistic Regression
+Kelebihan:
+-Model yang sederhana dan mudah diinterpretasikan.
+-Cepat dalam pelatihan dan prediksi.
+Kekurangan:
+-Cenderung memiliki performa rendah untuk data yang tidak linear.
+-Sensitif terhadap fitur yang saling berkorelasi.
+
+2. K-Nearest Neighbors (KNN)
+Kelebihan:
+-Tidak memerlukan proses pelatihan (lazy learner).
+-Sederhana dan cocok untuk data dengan distribusi yang jelas.
+Kekurangan:
+-Waktu prediksi bisa lambat karena menghitung jarak dengan seluruh data latih.
+-Sensitif terhadap pemilihan nilai k dan skala fitur.
+
+3. Decision Tree
+Kelebihan:
+-Mudah diinterpretasikan (berbentuk pohon keputusan).
+-Dapat menangani data numerik dan kategorikal.
+-Tidak membutuhkan normalisasi data.
+Kekurangan:
+-Rentan terhadap overfitting terutama jika tidak dilakukan pruning.
+
+4. Random Forest
+Kelebihan:
+-Mengatasi overfitting dari decision tree dengan teknik ensemble.
+-Lebih stabil dan akurat dalam banyak kasus klasifikasi.
+Kekurangan:
+-Interpretasi lebih sulit dibanding decision tree tunggal.
+-Memerlukan sumber daya komputasi lebih besar.
+
+Pemilihan Model Terbaik
+Setelah dilakukan pelatihan keempat model, dilakukan evaluasi terhadap performa masing-masing model menggunakan metrik evaluasi seperti akurasi, precision, recall, dan F1-score. Model terbaik dipilih berdasarkan hasil metrik evaluasi pada data uji. Jika hasil menunjukkan bahwa misalnya salah satu algritma memiliki nilai F1-score tertinggi, maka model tersebut dipilih sebagai model terbaik.Berdasarkan hasil evaluasi, model RandomForest memberikan hasil akurasi dan F1-score tertinggi dibandingkan model lainnya. Oleh karena itu, model ini dipilih sebagai solusi terbaik dalam klasifikasi gender pada dataset ini karena mampu mengatasi overfitting dan menangkap kompleksitas data lebih baik.
+
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Untuk mengevaluasi performa model klasifikasi yang digunakan, beberapa metrik evaluasi berikut diterapkan:
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+✅ Metrik Evaluasi yang Digunakan
+Accuracy
+Mengukur proporsi prediksi yang benar dari keseluruhan prediksi.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Accuracy
+=
+𝑇
+𝑃
++
+𝑇
+𝑁
+𝑇
+𝑃
++
+𝑇
+𝑁
++
+𝐹
+𝑃
++
+𝐹
+𝑁
+Accuracy= 
+TP+TN+FP+FN
+TP+TN
+​
+ 
+Precision
+Mengukur ketepatan prediksi positif dari seluruh prediksi positif.
+
+Precision
+=
+𝑇
+𝑃
+𝑇
+𝑃
++
+𝐹
+𝑃
+Precision= 
+TP+FP
+TP
+​
+ 
+Recall (Sensitivity)
+Mengukur seberapa baik model menangkap semua data yang relevan (positif).
+
+Recall
+=
+𝑇
+𝑃
+𝑇
+𝑃
++
+𝐹
+𝑁
+Recall= 
+TP+FN
+TP
+​
+ 
+F1-Score
+Merupakan rata-rata harmonis dari precision dan recall.
+
+F1
+=
+2
+×
+Precision
+×
+Recall
+Precision
++
+Recall
+F1=2× 
+Precision+Recall
+Precision×Recall
+​
+ 📌 Hasil Evaluasi Model
+Model	Train Accuracy	Test Accuracy	Precision (avg)	Recall (avg)	F1 Score (avg)
+Logistic Regression	95.01%	95.98%	0.96	0.96	0.96
+K-Nearest Neighbors	97.25%	94.13%	0.94	0.94	0.94
+Decision Tree	99.77%	94.74%	0.95	0.95	0.95
+Random Forest	99.77%	95.52%	0.96	0.96	0.96
+
+📈 Analisis Hasil Evaluasi
+Logistic Regression menunjukkan generalisasi yang sangat baik dengan test accuracy tertinggi (95.98%), meskipun training accuracy-nya lebih rendah dari model lain.
+
+K-Nearest Neighbors sedikit overfit (97.25% train vs 94.13% test), namun performanya masih solid.
+
+Decision Tree memperlihatkan overfitting yang tinggi, dengan training accuracy hampir sempurna (99.77%) namun test accuracy menurun menjadi 94.74%.
+
+Random Forest mengatasi overfitting yang dialami oleh Decision Tree, dengan test accuracy yang lebih stabil (95.52%) dan performa metrik lainnya yang seimbang.
+
+✅ Kesimpulan Pemilihan Model Terbaik
+Berdasarkan hasil evaluasi, Random Forest Classifier dipilih sebagai model terbaik karena:
+
+Memiliki kombinasi train-test accuracy yang stabil.
+
+Nilai precision, recall, dan F1-score tinggi dan seimbang.
+
+Memiliki kemampuan generalization yang baik, sekaligus meminimalkan overfitting yang dialami oleh Decision Tree.
+
+
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
