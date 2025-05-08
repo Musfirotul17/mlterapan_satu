@@ -130,120 +130,60 @@ Setelah dilakukan pelatihan keempat model, dilakukan evaluasi terhadap performa 
 
 
 ## Evaluation
-Untuk mengevaluasi performa model klasifikasi yang digunakan, beberapa metrik evaluasi berikut diterapkan:
+Untuk mengevaluasi performa model klasifikasi, beberapa metrik evaluasi yang digunakan adalah sebagai berikut:
 
-✅ Metrik Evaluasi yang Digunakan
-Accuracy
-Mengukur proporsi prediksi yang benar dari keseluruhan prediksi.
+### ✅ Metrik Evaluasi yang Digunakan
 
-Accuracy
-=
-𝑇
-𝑃
-+
-𝑇
-𝑁
-𝑇
-𝑃
-+
-𝑇
-𝑁
-+
-𝐹
-𝑃
-+
-𝐹
-𝑁
-Accuracy= 
-TP+TN+FP+FN
-TP+TN
-​
- 
-Precision
-Mengukur ketepatan prediksi positif dari seluruh prediksi positif.
+1. **Accuracy**  
+   Mengukur proporsi prediksi yang benar dari keseluruhan prediksi.  
+   Rumus:
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+2. **Precision**  
+Mengukur ketepatan dari prediksi positif yang dilakukan oleh model.  
+Rumus:
+Precision = TP / (TP + FP)
+3. **Recall**  
+Mengukur seberapa baik model dalam menemukan semua data aktual yang relevan (positif).  
+Rumus:
+Recall = TP / (TP + FN)
+4. **F1-Score**  
+Rata-rata harmonis dari precision dan recall. Cocok digunakan jika terdapat ketidakseimbangan kelas.  
+Rumus:
+F1 Score = 2 * (Precision * Recall) / (Precision + Recall)
 
-Precision
-=
-𝑇
-𝑃
-𝑇
-𝑃
-+
-𝐹
-𝑃
-Precision= 
-TP+FP
-TP
-​
- 
-Recall (Sensitivity)
-Mengukur seberapa baik model menangkap semua data yang relevan (positif).
+### 📌 Hasil Evaluasi Model
 
-Recall
-=
-𝑇
-𝑃
-𝑇
-𝑃
-+
-𝐹
-𝑁
-Recall= 
-TP+FN
-TP
-​
- 
-F1-Score
-Merupakan rata-rata harmonis dari precision dan recall.
+| Model                   | Train Accuracy | Test Accuracy | Precision (avg) | Recall (avg) | F1 Score (avg) |
+|------------------------|----------------|----------------|------------------|----------------|----------------|
+| Logistic Regression     | 95.01%         | 95.98%         | 0.96             | 0.96           | 0.96           |
+| K-Nearest Neighbors     | 97.25%         | 94.13%         | 0.94             | 0.94           | 0.94           |
+| Decision Tree           | 99.77%         | 94.74%         | 0.95             | 0.95           | 0.95           |
+| Random Forest           | 99.77%         | 95.52%         | 0.96             | 0.96           | 0.96           |
 
-F1
-=
-2
-×
-Precision
-×
-Recall
-Precision
-+
-Recall
-F1=2× 
-Precision+Recall
-Precision×Recall
-​
- 📌 Hasil Evaluasi Model
-Model	Train Accuracy	Test Accuracy	Precision (avg)	Recall (avg)	F1 Score (avg)
-Logistic Regression	95.01%	95.98%	0.96	0.96	0.96
-K-Nearest Neighbors	97.25%	94.13%	0.94	0.94	0.94
-Decision Tree	99.77%	94.74%	0.95	0.95	0.95
-Random Forest	99.77%	95.52%	0.96	0.96	0.96
+---
 
-📈 Analisis Hasil Evaluasi
-Logistic Regression menunjukkan generalisasi yang sangat baik dengan test accuracy tertinggi (95.98%), meskipun training accuracy-nya lebih rendah dari model lain.
+### 📈 Analisis Hasil Evaluasi
 
-K-Nearest Neighbors sedikit overfit (97.25% train vs 94.13% test), namun performanya masih solid.
+- **Logistic Regression** menunjukkan performa generalisasi yang baik. Meskipun memiliki akurasi train yang lebih rendah dari model lain, akurasi test-nya adalah yang tertinggi (95.98%).
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/logistic%20regression.png?raw=true)
+- **K-Nearest Neighbors** sedikit overfitting, dengan perbedaan antara train dan test accuracy (97.25% vs 94.13%).
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/knn.png?raw=true)
+- **Decision Tree** menunjukkan overfitting yang kuat, dengan train accuracy sangat tinggi (99.77%) namun penurunan akurasi pada data test (94.74%).
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/decisiontree.png?raw=true)
+- **Random Forest** mengatasi overfitting yang terjadi pada Decision Tree. Dengan train accuracy 99.77% dan test accuracy 95.52%, model ini menunjukkan keseimbangan dan performa evaluasi yang baik secara keseluruhan.
+![alt text](https://github.com/Musfirotul17/mlterapan_satu/blob/main/randomforest.png?raw=true)
+---
 
-Decision Tree memperlihatkan overfitting yang tinggi, dengan training accuracy hampir sempurna (99.77%) namun test accuracy menurun menjadi 94.74%.
+### ✅ Model Terbaik
 
-Random Forest mengatasi overfitting yang dialami oleh Decision Tree, dengan test accuracy yang lebih stabil (95.52%) dan performa metrik lainnya yang seimbang.
+Model terbaik yang dipilih adalah **Random Forest Classifier**, karena:
 
-✅ Kesimpulan Pemilihan Model Terbaik
-Berdasarkan hasil evaluasi, Random Forest Classifier dipilih sebagai model terbaik karena:
-
-Memiliki kombinasi train-test accuracy yang stabil.
-
-Nilai precision, recall, dan F1-score tinggi dan seimbang.
-
-Memiliki kemampuan generalization yang baik, sekaligus meminimalkan overfitting yang dialami oleh Decision Tree.
-
-
-
+- Memiliki performa stabil dan konsisten di data train dan test.
+- Memperoleh nilai precision, recall, dan F1-score yang tinggi dan seimbang.
+- Mampu menghindari overfitting yang terlihat pada Decision Tree.
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
 **---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
 
